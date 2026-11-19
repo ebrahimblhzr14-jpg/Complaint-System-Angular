@@ -1,0 +1,546 @@
+@use "tailwindcss";
+
+:root {
+  /* ==========================================================================
+     Warm Gold Glassmorphism Design System - Light Theme
+     ========================================================================== */
+  --bg-main: #F4F1EB;
+  --bg-main-gradient: radial-gradient(ellipse at 85% 0%, rgba(217, 166, 90, 0.12) 0%, transparent 50%),
+                      radial-gradient(ellipse at 15% 100%, rgba(201, 151, 69, 0.08) 0%, transparent 50%),
+                      #F4F1EB;
+
+  /* Frosted Glass Surfaces (Light) */
+  --bg-surface: rgba(255, 255, 255, 0.76);
+  --bg-surface-solid: #FFFFFF;
+  --bg-surface-secondary: rgba(234, 228, 217, 0.65);
+  --bg-surface-subtle: rgba(244, 241, 235, 0.72);
+  --bg-surface-elevated: rgba(255, 255, 255, 0.92);
+
+  /* Typography (Warm Neutrals) */
+  --text-primary: #34312C;
+  --text-secondary: #777067;
+  --text-muted: #9E978C;
+
+  /* Warm Gold & Champagne Accents */
+  --color-brand-primary: #C99745;
+  --color-brand-primary-hover: #B88536;
+  --color-brand-primary-deep: #A9792E;
+  --color-brand-champagne: #D9A65A;
+  --color-brand-amber: #E98A2D;
+  --color-brand-primary-subtle: rgba(201, 151, 69, 0.12);
+  --color-brand-primary-text: #FFFFFF;
+  --color-brand-gradient: linear-gradient(135deg, #C99745 0%, #D9A65A 100%);
+  --color-brand-gradient-hover: linear-gradient(135deg, #B88536 0%, #C99745 100%);
+
+  /* Borders & Glass Highlights */
+  --border-subtle: rgba(201, 151, 69, 0.20);
+  --border-strong: rgba(201, 151, 69, 0.38);
+  --glass-shadow: 0 4px 24px -2px rgba(169, 121, 46, 0.08), 0 2px 6px -1px rgba(52, 49, 44, 0.04);
+  --glass-reflection: inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
+
+  /* Semantic State Colors */
+  --color-success: #10B981;
+  --color-success-subtle: rgba(16, 185, 129, 0.12);
+  --color-warning: #E98A2D;
+  --color-warning-subtle: rgba(233, 138, 45, 0.14);
+  --color-danger: #E5534B;
+  --color-danger-subtle: rgba(229, 83, 75, 0.12);
+  --color-info: #D9A65A;
+  --color-info-subtle: rgba(217, 166, 90, 0.16);
+
+  /* Fonts */
+  --font-arabic: 'Cairo', system-ui, -apple-system, sans-serif;
+  --font-english: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================================================
+   Warm Gold Glassmorphism Design System - Dark Theme
+   ========================================================================== */
+html.dark {
+  --bg-main: #211F1B;
+  --bg-main-gradient: radial-gradient(ellipse at 85% 0%, rgba(201, 151, 69, 0.10) 0%, transparent 50%),
+                      radial-gradient(ellipse at 15% 100%, rgba(217, 166, 90, 0.06) 0%, transparent 50%),
+                      #211F1B;
+
+  /* Frosted Glass Surfaces (Dark) */
+  --bg-surface: rgba(43, 40, 34, 0.78);
+  --bg-surface-solid: #2B2822;
+  --bg-surface-secondary: rgba(33, 31, 27, 0.68);
+  --bg-surface-subtle: rgba(33, 31, 27, 0.78);
+  --bg-surface-elevated: rgba(54, 49, 40, 0.94);
+
+  /* Typography (Warm Dark Neutrals) */
+  --text-primary: #F5F0E7;
+  --text-secondary: #C2B7A5;
+  --text-muted: #8E8576;
+
+  /* Warm Gold & Champagne Accents */
+  --color-brand-primary: #D9A65A;
+  --color-brand-primary-hover: #E3B46E;
+  --color-brand-primary-deep: #C99745;
+  --color-brand-champagne: #D9A65A;
+  --color-brand-amber: #E98A2D;
+  --color-brand-primary-subtle: rgba(217, 166, 90, 0.16);
+  --color-brand-primary-text: #211F1B;
+  --color-brand-gradient: linear-gradient(135deg, #D9A65A 0%, #C99745 100%);
+  --color-brand-gradient-hover: linear-gradient(135deg, #E3B46E 0%, #D9A65A 100%);
+
+  /* Borders & Glass Highlights */
+  --border-subtle: rgba(217, 166, 90, 0.18);
+  --border-strong: rgba(217, 166, 90, 0.35);
+  --glass-shadow: 0 4px 28px -2px rgba(0, 0, 0, 0.45), 0 2px 8px -1px rgba(0, 0, 0, 0.35);
+  --glass-reflection: inset 0 1px 1px 0 rgba(217, 166, 90, 0.20);
+
+  /* Semantic State Colors */
+  --color-success: #34D399;
+  --color-success-subtle: rgba(52, 211, 153, 0.14);
+  --color-warning: #F59E0B;
+  --color-warning-subtle: rgba(245, 158, 11, 0.14);
+  --color-danger: #F87171;
+  --color-danger-subtle: rgba(248, 113, 113, 0.14);
+  --color-info: #D9A65A;
+  --color-info-subtle: rgba(217, 166, 90, 0.18);
+}
+
+html[dir="rtl"] {
+  font-family: var(--font-arabic);
+}
+
+html[dir="ltr"] {
+  font-family: var(--font-english);
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  background-color: var(--bg-main);
+  background-image: var(--bg-main-gradient);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  color: var(--text-primary);
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background-color: #C99745;
+  color: #FFFFFF;
+}
+
+/* Prevent body scroll when drawer/modal is open */
+body.mobile-drawer-open {
+  overflow: hidden !important;
+}
+
+/* Sidebar: Robust Desktop Visibility & Mobile Drawer Isolation */
+.app-sidebar-drawer {
+  /* On mobile (< 1024px): off-canvas drawer */
+  @media (max-width: 1023.98px) {
+    max-width: 80vw;
+    box-shadow: 0 25px 50px -12px rgba(33, 31, 27, 0.4);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:dir(rtl),
+    [dir="rtl"] & {
+      transform: translateX(100%);
+    }
+
+    &:dir(ltr),
+    [dir="ltr"] & {
+      transform: translateX(-100%);
+    }
+
+    &.mobile-open {
+      transform: translateX(0) !important;
+    }
+  }
+
+  /* On desktop & laptop screens (>= 1024px): ALWAYS visible, fixed, no translation */
+  @media (min-width: 1024px) {
+    transform: none !important;
+    max-width: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Hide scrollbar for clean horizontal swiping on mobile */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-primary);
+}
+
+/* ==========================================================================
+   Warm Gold Glassmorphism Components
+   ========================================================================== */
+
+/* Frosted Glass Card Base */
+.cms-card {
+  background-color: var(--bg-surface);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--text-primary);
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--glass-shadow), var(--glass-reflection);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.cms-card-hover:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 8px 30px -4px rgba(201, 151, 69, 0.16), var(--glass-reflection);
+  transform: translateY(-1px);
+}
+
+/* Elevated Glass (Modals, Dropdowns, Floating Panels) */
+.cms-glass-elevated {
+  background-color: var(--bg-surface-elevated);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.22), var(--glass-reflection);
+}
+
+/* Subtle Glass Surface (Toolbars, Sub-containers) */
+.cms-glass-subtle {
+  background-color: var(--bg-surface-secondary);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .cms-card,
+  .cms-glass-elevated,
+  .cms-glass-subtle,
+  .cms-btn-secondary,
+  .cms-input {
+    background-color: var(--bg-surface-solid) !important;
+  }
+}
+
+/* Primary Button (Warm Gold Gradient with Micro-interactions) */
+.cms-btn-primary {
+  background: var(--color-brand-gradient);
+  color: var(--color-brand-primary-text, #FFFFFF);
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  border-radius: 0.625rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 10px -1px rgba(201, 151, 69, 0.38), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+
+  &:hover:not(:disabled) {
+    background: var(--color-brand-gradient-hover);
+    box-shadow: 0 4px 18px -1px rgba(201, 151, 69, 0.48), inset 0 1px 1px 0 rgba(255, 255, 255, 0.45);
+    transform: translateY(-1px);
+  }
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 1px 4px -1px rgba(201, 151, 69, 0.3);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+/* Secondary Button (Frosted Glass) */
+.cms-btn-secondary {
+  background-color: var(--bg-surface);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  font-weight: 500;
+  padding: 0.55rem 1.15rem;
+  border-radius: 0.625rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+
+  &:hover:not(:disabled) {
+    background-color: var(--bg-surface-secondary);
+    border-color: var(--border-strong);
+    color: var(--color-brand-primary);
+    transform: translateY(-1px);
+  }
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+/* Accent Button (Warm Amber / Champagne) */
+.cms-btn-accent {
+  background: linear-gradient(135deg, var(--color-brand-amber) 0%, var(--color-brand-champagne) 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  border-radius: 0.625rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 10px -1px rgba(233, 138, 45, 0.35);
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.06);
+    box-shadow: 0 4px 18px -1px rgba(233, 138, 45, 0.45);
+    transform: translateY(-1px);
+  }
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+/* Danger Button (Warm Coral) */
+.cms-btn-danger {
+  background-color: var(--color-danger-subtle);
+  color: var(--color-danger);
+  border: 1px solid rgba(229, 83, 75, 0.25);
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  border-radius: 0.625rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-danger);
+    color: #FFFFFF;
+    border-color: var(--color-danger);
+    transform: translateY(-1px);
+  }
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+/* Frosted Glass Form Inputs */
+.cms-input {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  background-color: var(--bg-surface);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-brand-primary);
+    box-shadow: 0 0 0 3px var(--color-brand-primary-subtle);
+    background-color: var(--bg-surface-solid);
+  }
+  &::placeholder {
+    color: var(--text-muted);
+  }
+  &:disabled {
+    background-color: var(--bg-surface-secondary);
+    cursor: not-allowed;
+  }
+}
+
+.cms-input-error {
+  border-color: var(--color-danger) !important;
+  &:focus {
+    box-shadow: 0 0 0 3px var(--color-danger-subtle) !important;
+  }
+}
+
+/* Warm Status Badges with Frosted Glass */
+.cms-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.cms-badge-pending {
+  background-color: rgba(135, 148, 119, 0.14);
+  color: #879477;
+  border: 1px solid rgba(135, 148, 119, 0.32);
+}
+
+.cms-badge-inprogress {
+  background-color: rgba(197, 138, 58, 0.14);
+  color: #C58A3A;
+  border: 1px solid rgba(197, 138, 58, 0.32);
+}
+
+.cms-badge-resolved {
+  background-color: rgba(84, 133, 106, 0.14);
+  color: #54856A;
+  border: 1px solid rgba(84, 133, 106, 0.32);
+}
+
+.cms-badge-closed {
+  background-color: rgba(129, 124, 114, 0.14);
+  color: #817C72;
+  border: 1px solid rgba(129, 124, 114, 0.32);
+}
+
+.cms-badge-danger {
+  background-color: rgba(184, 92, 85, 0.14);
+  color: #B85C55;
+  border: 1px solid rgba(184, 92, 85, 0.32);
+}
+
+html.dark .cms-badge-pending {
+  background-color: rgba(155, 170, 139, 0.16);
+  color: #9BAA8B;
+  border: 1px solid rgba(155, 170, 139, 0.32);
+}
+
+html.dark .cms-badge-inprogress {
+  background-color: rgba(214, 158, 79, 0.16);
+  color: #D69E4F;
+  border: 1px solid rgba(214, 158, 79, 0.32);
+}
+
+html.dark .cms-badge-resolved {
+  background-color: rgba(104, 157, 128, 0.16);
+  color: #689D80;
+  border: 1px solid rgba(104, 157, 128, 0.32);
+}
+
+html.dark .cms-badge-closed {
+  background-color: rgba(155, 149, 138, 0.16);
+  color: #9B958A;
+  border: 1px solid rgba(155, 149, 138, 0.32);
+}
+
+html.dark .cms-badge-danger {
+  background-color: rgba(200, 112, 105, 0.16);
+  color: #C87069;
+  border: 1px solid rgba(200, 112, 105, 0.32);
+}
+
+/* Warm Priority Badges */
+.cms-priority-high {
+  background-color: var(--color-danger-subtle);
+  color: var(--color-danger);
+  border: 1px solid rgba(229, 83, 75, 0.28);
+}
+
+.cms-priority-medium {
+  background-color: var(--color-warning-subtle);
+  color: var(--color-warning);
+  border: 1px solid rgba(233, 138, 45, 0.28);
+}
+
+.cms-priority-low {
+  background-color: var(--color-success-subtle);
+  color: var(--color-success);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+}
+
+/* Professional Print Styles for Complaint Reports */
+@media print {
+  header,
+  nav,
+  aside,
+  app-sidebar,
+  app-topbar,
+  .no-print,
+  button:not(.allow-print),
+  form,
+  select,
+  .cms-btn-primary,
+  .cms-btn-secondary,
+  .cms-btn-danger {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 10.5pt !important;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .cms-card {
+    border: 1px solid #e5e7eb !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    page-break-inside: avoid;
+    border-radius: 0.5rem !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+}
